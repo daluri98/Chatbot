@@ -13,8 +13,8 @@ import random
 words=[]
 classes = []
 documents = []
-ignore_words = ['?', '!']
-intents = json.loads(open("/Users/diamondaluri/Downloads/Chatbot/Trial/intentsch.json").read())
+ignore_words = ['?', '!'] #you can also use punkt or add other characters as required
+intents = json.loads(open("/path/to/your/intents.json").read()) #add the file path for your intents.json file
 
 for intent in intents['intents']:
     for pattern in intent['patterns']:
@@ -37,26 +37,24 @@ words = sorted(list(set(words)))
 classes = sorted(list(set(classes)))
 # documents = combination between patterns and intents
 print (len(documents), "documents")
-# classes = intents
 print (len(classes), "classes", classes)
-# words = all words, vocabulary
 print (len(words), "unique lemmatized words", words)
 pickle.dump(words,open('words.pkl','wb'))
 pickle.dump(classes,open('classes.pkl','wb'))
 
-# create our training data
+# create training data
 training = []
-# create an empty array for our output
+# create an empty output array 
 output_empty = [0] * len(classes)
 # training set, bag of words for each sentence
 for doc in documents:
-    # initialize our bag of words
+    # initialize bag of words
     bag = []
     # list of tokenized words for the pattern
     pattern_words = doc[0]
-    # lemmatize each word - create base word, in attempt to represent related words
+    # lemmatize each word
     pattern_words = [lemmatizer.lemmatize(word.lower()) for word in pattern_words]
-    # create our bag of words array with 1, if word match found in current pattern
+    # create our bag of words as explained in readme file
     for w in words:
         bag.append(1) if w in pattern_words else bag.append(0)
 
@@ -65,12 +63,11 @@ for doc in documents:
     output_row[classes.index(doc[1])] = 1
 
     training.append([bag, output_row])
-# shuffle our features and turn into np.array
+
+
 random.shuffle(training)
-# training = np.array(training)
-# create train and test lists. X - patterns, Y - intents
-# train_x = list(training[:,0])
-# train_y = list(training[:,1])
+
+#train features
 
 train_x = np.array([x[0] for x in training])
 train_y = np.array([x[1] for x in training])
@@ -90,7 +87,7 @@ model.add(Dense(64, activation='relu'))
 model.add(Dropout(0.5))
 model.add(Dense(len(train_y[0]), activation='softmax'))
 
-# Compile model. Stochastic gradient descent with Nesterov accelerated gradient gives good results for this model
+# Compile model. Stochastic gradient descent with Nesterov accelerated gradient
 sgd = SGD_legacy(learning_rate=0.01, decay=1e-6, momentum=0.9, nesterov=True)
 model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
 
