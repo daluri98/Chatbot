@@ -16,7 +16,7 @@
    ],
    "responses": [
       "Hello!",
-      "Good to see you!",
+      "Good to see you again!",
       "Hi there, how can I help?"
    ],
    "context_set": ""
@@ -66,7 +66,7 @@
       "who designed you"
    ],
    "responses": [
-      "Diamond Celestine Aluri"
+      "College students"
    ],
    "context_set": ""
 },
@@ -88,10 +88,10 @@
       "what are you"
    ],
    "responses": [
-      "You can call me QueryBot.",
-      "I'm QueryBot",
+      "You can call me Mind Reader.",
+      "I'm Mind Reader",
       "I am a Chatbot.",
-      "I am your QueryBot"
+      "I am your helper"
    ],
    "context_set": ""
 },
@@ -117,7 +117,7 @@
       "timing college"
    ],
    "responses": [
-      "You can find the relevant information here <a target=\"_blank\" href= \"https://www.bauer.uh.edu/search/contact-us.php\"></a>"
+      "College is open 8am-5pm Monday-Saturday!"
    ],
    "context_set": ""
 },
@@ -141,7 +141,7 @@
       "call"
    ],
    "responses": [
-      "You can find the relevant information here <a target=\"_blank\" href= \"https://www.bauer.uh.edu/search/contact-us.php\"></a>"
+      "You can contact at: NUMBER"
    ],
    "context_set": ""
 },
@@ -177,7 +177,7 @@
       "Civil engineering"
    ],
    "responses": [
-      "Our university at C.T. Bauer College of Business offers various courses. The undergraduate programs can be found at <a target=\"_blank\" href= \"https://www.bauer.uh.edu/undergraduate\"></a>. You can also navigate to Academic Programs here <a target=\"_blank\" href= \"https://www.bauer.uh.edu\"></a> to explore all programs "
+      "Our university offers Information Technology, computer Engineering, Mechanical engineering,Chemical engineering, Civil engineering and extc Engineering."
    ],
    "context_set": ""
 },
@@ -209,7 +209,7 @@
       "fees for non-Ac room for boys"
    ],
    "responses": [
-      "For MBA fee details visit: <a target=\"_blank\" href=\"https://www.bauer.uh.edu/mba/professional/cost.php\"> here</a>, or contact C. T. Bauer College of Business Graduate and Professional Program Financial Aid Office Insperity Classroom Business Building (CBB), Suite 424 Houston, Texas 77204-6021 Phone: (713) 743-0700"
+      "For Fee detail visit <a target=\"_blank\" href=\"LINK\"> here</a>"
    ],
    "context_set": ""
 },
