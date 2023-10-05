@@ -97,7 +97,7 @@ ChatLog.tag_configure("user", foreground="blue")
 ChatLog.tag_configure("bot", foreground="green")
 
 # Bind scrollbar to Chat window
-scrollbar = Scrollbar(base, command=ChatLog.yview, cursor="heart")
+scrollbar = Scrollbar(base, command=ChatLog.yview, cursor="sb_v_double_arrow")
 ChatLog['yscrollcommand'] = scrollbar.set
 
 # Create a text input area with the same width as ChatLog
