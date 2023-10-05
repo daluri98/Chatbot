@@ -5,20 +5,22 @@ import pickle
 import numpy as np
 
 from keras.models import load_model
-model = load_model('/Users/diamondaluri/Downloads/Chatbot/Trial/chatbot_model.h5')
+model = load_model('/path/to/your/chatbot_model.h5')
 import json
 import random
-intents = json.loads(open('/Users/diamondaluri/Downloads/Chatbot/Trial/intentsch.json').read())
-words = pickle.load(open('/Users/diamondaluri/Downloads/Chatbot/Trial/words.pkl','rb'))
-classes = pickle.load(open('/Users/diamondaluri/Downloads/Chatbot/Trial/classes.pkl','rb'))
+
+#Add relevant filepaths below
+intents = json.loads(open('/path/to/your/intents.json').read())
+words = pickle.load(open('/path/to/your/words.pkl','rb'))
+classes = pickle.load(open('/path/to/your/classes.pkl','rb'))
 
 def clean_up_sentence(sentence):
-    # tokenize the pattern - split words into array
+    # tokenize the input pattern 
     sentence_words = nltk.word_tokenize(sentence)
-    # stem each word - create short form for word
     sentence_words = [lemmatizer.lemmatize(word.lower()) for word in sentence_words]
     return sentence_words
-# return bag of words array: 0 or 1 for each word in the bag that exists in the sentence
+
+#return bag of words array: 0 or 1 for each word in the bag that exists in the sentence
 
 def bow(sentence, words, show_details=True):
     # tokenize the pattern
@@ -35,7 +37,7 @@ def bow(sentence, words, show_details=True):
     return(np.array(bag))
 
 def predict_class(sentence, model):
-    # filter out predictions below a threshold
+    # filter out predictions below a threshold of 0.25 
     p = bow(sentence, words,show_details=False)
     res = model.predict(np.array([p]))[0]
     ERROR_THRESHOLD = 0.25
@@ -67,6 +69,7 @@ from tkinter import ttk
 from PIL import Image, ImageTk 
 
 def send():
+    
     msg = EntryBox.get("1.0", "end-1c").strip()
     EntryBox.delete("1.0", "end")
 
@@ -82,12 +85,13 @@ def send():
         ChatLog.config(state=tk.DISABLED)
         ChatLog.yview(tk.END)
 
+#Creating Chat User Interface
 base = tk.Tk()
 base.title("UH Query Bot")
 base.geometry("450x500")
 
 # Create Chat window
-ChatLog = tk.Text(base, bd=0, height="11", width="50", font="Arial", bg="light yellow")
+ChatLog = tk.Text(base, bd=0, height="11", width="50", font="Arial", bg="light yellow") #set the attributes as desired
 ChatLog.config(state=tk.DISABLED)
 ChatLog.tag_configure("user", foreground="blue")
 ChatLog.tag_configure("bot", foreground="green")
@@ -97,7 +101,7 @@ scrollbar = Scrollbar(base, command=ChatLog.yview, cursor="heart")
 ChatLog['yscrollcommand'] = scrollbar.set
 
 # Create a text input area with the same width as ChatLog
-EntryBox = tk.Text(base, bd=0, bg="light cyan",fg="black", height="5", width="50", font=("Arial", 12))
+EntryBox = tk.Text(base, bd=0, bg="light cyan",fg="black", height="5", width="50", font=("Arial", 12)) #set the attributes as desired
 
 # Load the send button image
 send_image = Image.open("send.png")  # Replace "send.png" with your image file
