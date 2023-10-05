@@ -41,6 +41,12 @@ Before you begin, ensure you have met the following requirements:
   - keras
   - numpy
 
+Download the NLTK data (needed for natural language processing):
+```python
+import nltk
+nltk.download('wordnet')
+```
+
 You can install the required Python packages using `pip`:
 
 ```bash
