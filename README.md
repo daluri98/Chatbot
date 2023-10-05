@@ -110,6 +110,7 @@ Before you begin executing the GUI, ensure you have met the following requiremen
   - keras
   - numpy
   - Pillow
+
 You can install these packages using pip with the following command:
 ```bash
 pip install nltk keras numpy pillow
